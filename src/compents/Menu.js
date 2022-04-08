@@ -1,22 +1,24 @@
-import React from 'react'
+import {useContext} from 'react'
 import { NavLink } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 export const Menu = () => {
+    const userContext=useContext(UserContext);
+    const {user}=userContext;
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
             
             
     <div className="navbar-collapse">
         <div className="navbar-nav">
-            {/*
-            En react siempre utilizar NavLink
-            para que solo se cargue una parte de la pagina
-            */}
-            <NavLink 
+            {!user.username &&
+                <NavLink 
                 className="nav-item nav-link" 
                 to="/home"
             >
                 Home
             </NavLink>
+            }
+            
 
             <NavLink 
                 
